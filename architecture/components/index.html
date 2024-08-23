@@ -1,0 +1,1399 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../docker/">
+      
+      
+        <link rel="next" href="../../ml/overview/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Components - FSD Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FSD Documentation" class="md-header__button md-logo" aria-label="FSD Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FSD Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Components
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ml/overview/" class="md-tabs__link">
+          
+  
+  Machine Learning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/overview/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../frontend/overview/" class="md-tabs__link">
+          
+  
+  Frontend
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../devops/overview/" class="md-tabs__link">
+          
+  
+  DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../microservices/overview/" class="md-tabs__link">
+          
+  
+  Microservices
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FSD Documentation" class="md-nav__button md-logo" aria-label="FSD Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    FSD Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terraform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#database-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backend-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backend Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagram
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Diagram">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-process-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Process Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontend Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-container-registry-acr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Container Registry (ACR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-container-instance-aci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Container Instance (ACI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/functionality/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functionality
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Frontend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/components/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/screen_mockups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mockups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/github/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Github
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/userstories/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Stories
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/sprints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sprints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Microservices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Microservices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Public API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/ingestion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kaggle Ingestion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Components</h1>
+
+<h2 id="database-architecture">Database Architecture</h2>
+<p>The database design is centered around two primary tables: </p>
+<ul>
+<li>The Coins table</li>
+<li>The Users table</li>
+</ul>
+<p>The Coins table stores essential information about various cryptocurrencies, including their names, symbols, and historical data. The Users table manages user authentication and stores sign-in credentials, ensuring secure access to the application. This design enables efficient data management and supports the core functionalities of the crypto financial dashboard.</p>
+<p>The image below shows the structure of the two tables that are used in the project architecture.</p>
+<p><img alt="database design" src="../images/db_design.png" /></p>
+<h2 id="backend-architecture">Backend Architecture</h2>
+<p>The API serves as the bridge between the frontend and the database, built using FastAPI, a modern web framework for creating APIs with Python. It manages data processing, business logic, and database interactions, offering endpoints for data retrieval, updates, and analytical operations. The API is containerized and deployed on Azure Container Instances, facilitating easy scaling and management.</p>
+<h3 id="architecture-diagram">Architecture Diagram</h3>
+<p><img alt="Backend Architecture" src="../images/backend_architecture.png" /></p>
+<h4 id="example-process-flow">Example Process Flow</h4>
+<p><strong>API Request/Route</strong></p>
+<ul>
+<li>Example: <code>http://127.0.0.1:8000/moving_averages?coin_name=Bitcoin&amp;coin_name=Cardano</code></li>
+</ul>
+<p>When a user requests moving averages for specific coins from the frontend, an API request is sent to the corresponding route. The API then queries the database for the relevant data, processes it through the analytics and visualization modules, and finally returns a JSON response containing the transaction status, message, and processed data.</p>
+<p><strong>Database SQL Request</strong></p>
+<ul>
+<li>Example: <code>SELECT * FROM CoinsTable WHERE NAME IN ('Bitcoin', 'Cardano')</code></li>
+</ul>
+<p>Within the API route, a dynamic SQL query is generated based on the client’s request to fetch data from the database. The retrieved data is loaded into a Pandas DataFrame, which is then passed to the analytics module for further processing.</p>
+<p><strong>Analytics Request</strong></p>
+<ul>
+<li>Example: <code>moving_average(df: pd.DataFrame, window: int = 5) -&gt; pd.DataFrame</code></li>
+</ul>
+<p>The analytics module processes the DataFrame, applying the requested analytical function—such as calculating moving averages. Once the computation is complete, the DataFrame is returned, ready for visualization.</p>
+<p><strong>Visualization Request</strong></p>
+<ul>
+<li>Example: <code>plot_line(df: pd.DataFrame, x_column_name: str, y_column_name: str) -&gt; go.Figure</code></li>
+</ul>
+<p>The visualization module contains generic functions for generating various plots. After the data is processed by the analytics module, it is passed to the visualization module, along with the necessary columns and metadata. The visualization function returns a Plotly figure object, which is converted to JSON and included in the API response.</p>
+<p><strong>API Response</strong></p>
+<ul>
+<li>Example: <code>{"transaction_state": 200, "figure_data": {...}}</code></li>
+</ul>
+<p>After all processing is complete, the API sends a response to the frontend, including the transaction status and the visualized data, ready for display.</p>
+<h2 id="frontend-architecture">Frontend Architecture</h2>
+<p>The frontend of our crypto financial dashboard is built using <strong>Vue.js</strong>, a progressive JavaScript framework that facilitates the creation of dynamic and interactive web applications. The architecture of the frontend is designed to ensure a seamless and responsive user experience, focusing on modularity, reusability, and efficient data handling.</p>
+<h3 id="key-components">Key Components</h3>
+<p><strong>Component-Based Structure</strong></p>
+<ul>
+<li>The frontend is organized into a series of reusable Vue components. Each component is responsible for a specific part of the user interface, such as charts, tables, and forms. This modular approach allows for easier maintenance and scalability.</li>
+<li>Common components include:<ul>
+<li><strong>Dashboard Component:</strong> The main view that displays various financial metrics, trends, and visualizations.</li>
+<li><strong>Chart Components:</strong> Custom components that render different types of charts (e.g., line charts, bar charts) using libraries like Plotly or Chart.js.</li>
+<li><strong>Data Table Components:</strong> Components that display tabular data with features like sorting, filtering, and pagination.</li>
+<li><strong>Form Components:</strong> Components that handle user inputs for searching, filtering, or submitting data.</li>
+</ul>
+</li>
+</ul>
+<p><strong>State Management</strong></p>
+<ul>
+<li>The application state is managed using <strong>Vuex</strong>, Vue's centralized state management library. Vuex allows us to store and manage the application's global state, such as user authentication, selected cryptocurrencies, and chart data.</li>
+<li>State management is crucial for ensuring consistency across different components and maintaining the application's responsiveness.</li>
+</ul>
+<p><strong>Routing</strong></p>
+<ul>
+<li><strong>Vue Router</strong> is used to manage navigation within the dashboard. It allows users to switch between different views (e.g., dashboard, analytics, settings) without reloading the page.</li>
+<li>The routing structure is designed to be intuitive, with clear paths and dynamic routing for accessing specific data points or visualizations.</li>
+</ul>
+<p><strong>Data Handling and API Integration</strong></p>
+<ul>
+<li>The frontend communicates with the backend via RESTful API calls to fetch real-time cryptocurrency data, historical trends, and other financial metrics.</li>
+<li><strong>Axios</strong> is used for making HTTP requests, ensuring smooth data retrieval and error handling.</li>
+<li>Data retrieved from the API is processed and visualized in various components, allowing users to interact with and explore the financial data effectively.</li>
+</ul>
+<p><strong>Styling and Theming</strong></p>
+<ul>
+<li>The dashboard's appearance is styled using <strong>ElementUI</strong>, a Vue.js-based UI component library that provides a rich set of pre-designed components and a consistent design system.</li>
+<li>ElementUI is leveraged to create a cohesive and professional look, with components like buttons, modals, forms, and tables seamlessly integrated into the dashboard.</li>
+<li>Theming is applied to ensure the dashboard has a professional and cohesive look.</li>
+</ul>
+<p><strong>Performance Optimization</strong></p>
+<ul>
+<li><strong>Lazy Loading:</strong> Vue's lazy loading feature is employed to load components only when they are needed, improving the application's load time and performance.</li>
+<li><strong>Caching:</strong> Caching strategies are implemented to reduce the number of API calls and enhance the user experience by loading data faster.</li>
+</ul>
+<h3 id="diagram">Diagram</h3>
+<p>You can include a diagram that illustrates the relationship between these components, the flow of data, and the interaction with the backend services.</p>
+<h2 id="azure-workflow">Azure Workflow</h2>
+<p>The project's Azure workflow utilizes two primary Azure resources to host the projects components: Azure Container Registry (ACR) and Azure Container Instance (ACI). This workflow is anchored in Docker, which is used to create, build, and deploy images to Azure for hosting. Below is an expanded explanation of ACR, ACI, and the Docker workflow involved in the project - for further reading on docker builds and the azure resource management through terraform you can refer to the <a href="../docker/#docker-overview">Docker documentation</a> and the <a href="../terraform/#terraform-overview">Terraform documentation</a> of the project.</p>
+<h3 id="azure-container-registry-acr">Azure Container Registry (ACR)</h3>
+<p>Azure Container Registry (ACR) is a managed, private Docker registry service provided by Microsoft Azure. It allows you to store and manage container images (such as Docker images) for all types of container deployments.</p>
+<p>Key Features of ACR:</p>
+<ul>
+<li><strong>Private Registry:</strong> Securely store your Docker images and other OCI artifacts.</li>
+<li><strong>Scalability:</strong> Provisioning scales seamlessly to accommodate growing needs.</li>
+<li><strong>Integration:</strong> Easily integrates with Azure Kubernetes Service (AKS), Azure DevOps, and other container orchestrators.</li>
+<li><strong>Geo-replication:</strong> Replicate your registry across multiple Azure regions for high availability and disaster recovery.</li>
+<li><strong>Vulnerability Scanning:</strong> Ensure images are secure by scanning for and identifying vulnerabilities.</li>
+<li><strong>Build &amp; Task Automation:</strong> Automate image builds and updates directly from source code repositories.</li>
+</ul>
+<p>Typical Use Cases:</p>
+<ul>
+<li>Storing Docker container images.</li>
+<li>Housing Helm charts and OCI artifacts.</li>
+<li>Integrating with CI/CD pipelines for continuous deployment.</li>
+</ul>
+<h3 id="azure-container-instance-aci">Azure Container Instance (ACI)</h3>
+<p>Azure Container Instance (ACI) is a serverless container service that allows you to run containers without managing underlying virtual machines.</p>
+<p>Key Features of ACI:</p>
+<ul>
+<li><strong>On-Demand Deployment:</strong> Quickly start, stop, and scale container instances as needed.</li>
+<li><strong>No VM Management:</strong> Focus on developing applications without worrying about VM infrastructure.</li>
+<li><strong>CPU/GPU Options:</strong> Choose from a variety of CPU and GPU configurations to match workload requirements.</li>
+<li><strong>Pay as You Go:</strong> Only pay for the compute resources used while the container is running.</li>
+<li><strong>Networking:</strong> Connect securely to other Azure resources using VNET integration.</li>
+</ul>
+<p>Typical Use Cases:</p>
+<ul>
+<li>Simple, stateless applications.</li>
+<li>Microservices orchestration.</li>
+<li>CI/CD jobs and Dev/Test environments.</li>
+<li>Batch processing and task automation.</li>
+</ul>
+<p>By integrating ACR and ACI with Docker in this workflow, the project benefits from streamlined image management, secure storage, and scalable, serverless container deployments. This setup ensures a robust, efficient, and flexible deployment pipeline for your API, leveraging the powerful capabilities of Microsoft Azure.</p>
+<h3 id="deployment-workflow">Deployment Workflow</h3>
+<p>The deployment process for each component of the project typically follows these steps:</p>
+<ol>
+<li><strong>Build a Docker Image:</strong> Begin by building the Docker image for the component.</li>
+<li><strong>Push to Azure Container Registry:</strong> Push the Docker image to the project's Azure Container Registry (ACR).</li>
+<li><strong>Deploy to Azure Resources:</strong> Deploy the image to the appropriate Azure resource, such as Azure Container Instances or Azure Web Apps.</li>
+</ol>
+<p>The diagram below illustrates this workflow:</p>
+<p><img alt="DeploymentWorkflow" src="../images/deployment_workflow.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "search.exact_match", "navigation.tabs", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
