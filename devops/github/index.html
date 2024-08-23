@@ -466,6 +466,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -946,6 +967,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ci-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI Pipeline
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1184,6 +1214,72 @@ ready branches. The staging branch is a buffer for the commits before they are m
 </li>
 <li>If all reviewers approve the PR, the code is merged into the protected branch.</li>
 </ul>
+<h3 id="ci-pipeline">CI Pipeline</h3>
+<p>The Continuous Integration (CI) pipeline is a crucial part of our development process, ensuring that code changes meet our project's quality standards before they are merged into the main branch. The CI pipeline is automatically triggered when a developer pushes code to the <code>main</code> branch or creates a pull request targeting the <code>main</code> branch. The pipeline consists of several stages:</p>
+<ul>
+<li>
+<p><strong>Setting up the Environment</strong>: The pipeline runs on the latest version of Ubuntu and uses Python 3.9.13. It checks out the repository code and installs the necessary dependencies, including tools like Flake8, Pytest, Black, and MyPy.</p>
+</li>
+<li>
+<p><strong>Code Linting with Flake8</strong>: This step checks the code for syntax errors and enforces Python coding standards. If any issues are found, the pipeline fails, prompting the developer to fix them.</p>
+</li>
+<li>
+<p><strong>Code Formatting with Black</strong>: The Black tool checks that the code adheres to our project's formatting guidelines. If the code isn't properly formatted, the pipeline fails, and the developer must reformat their code.</p>
+</li>
+<li>
+<p><strong>Type Checking with MyPy</strong>: This step ensures that the code is type-safe by running MyPy, a static type checker. This helps catch potential bugs that could arise from type mismatches.</p>
+</li>
+<li>
+<p><strong>Testing with Pytest</strong>: Finally, the pipeline runs our test suite using Pytest. All tests must pass for the pipeline to succeed, ensuring that the code is functional and that existing features haven't been broken by the new changes.</p>
+</li>
+</ul>
+<p>If any stage of the CI pipeline fails, the pull request is rejected, and the developer must resolve the issues before resubmitting. This automated process helps maintain high code quality and prevents problematic code from being merged into the main branch.</p>
+<p>Below is our CI yaml that initializes our pipeline:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Python application</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="nt">push</span><span class="p">:</span>
+<span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="nt">pull_request</span><span class="p">:</span>
+<span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+
+<span class="nt">permission</span><span class="p">:</span>
+<span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="nt">build</span><span class="p">:</span>
+
+<span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set Up Python 3.9.13</span>
+
+<span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@V3</span>
+<span class="nt">with</span><span class="p">:</span>
+<span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9.13&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">python -m pip install --upgrade pip</span>
+<span class="l l-Scalar l-Scalar-Plain">pip install flake8 pytest black mypy</span>
+<span class="l l-Scalar l-Scalar-Plain">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="c1"># stop the build if there are Python syntax errors or undefined names</span>
+<span class="l l-Scalar l-Scalar-Plain">flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+<span class="c1"># exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide</span>
+<span class="l l-Scalar l-Scalar-Plain">flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check code formatting with Black</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">black --check .</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Type check with MyPy</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">mypy .</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">pytest -v</span>
+</code></pre></div>
 
 
 
